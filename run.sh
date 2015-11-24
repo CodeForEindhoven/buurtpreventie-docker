@@ -1,5 +1,7 @@
 #!/bin/bash
 chown www-data:www-data /app -R
+chmod a+x /app/install_prod.sh
+./app/install_prod.sh
 
 if [ "$ALLOW_OVERRIDE" = "**False**" ]; then
     unset ALLOW_OVERRIDE

@@ -5,7 +5,7 @@ MAINTAINER Fernando Mayo <fernando@tutum.co>
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get -yq install \
         curl \
-        unzip \
+        git \
         apache2 \
         libapache2-mod-php5 \
         php5-mysql \
@@ -19,7 +19,6 @@ RUN apt-get update && \
 RUN /usr/sbin/php5enmod mcrypt
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
     sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2/php.ini
-RUN curl -O https://github.com/CodeForEindhoven/buurtpreventie/archive/master.zip && unzip master.zip && rm master.zip
 
 ENV ALLOW_OVERRIDE **False**
 
@@ -29,8 +28,10 @@ RUN chmod 755 /*.sh
 
 # Configure /app folder with sample app
 RUN mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html
-ADD sample/ /app
+RUN git clone https://github.com/CodeForEindhoven/buurtpreventie.git /app
 
 EXPOSE 80
 WORKDIR /app
+COPY parameters.yml /app/app/config/parameters.yml
+
 CMD ["/run.sh"]
