@@ -23,6 +23,14 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
 #Defaults, modify with environment variable to change
 ENV ALLOW_OVERRIDE **False**
 ENV MYSQL_DATABASE buurtpreventie
+ENV APP_LOCALE nl
+ENV APP_SECRET SecretTokenForApplication
+ENV APP_AUTHOR Buurtpreventie
+ENV APP_TITLE Buurtpreventie
+ENV APP_DESCRIPTION 'Buurtpreventie in Eindhoven'
+ENV APP_MIN_WALKERS 2
+ENV APP_MONTHS 3
+ENV APP_SHOW_RESULT true
 
 # Add image configuration and scripts
 ADD run.sh /run.sh

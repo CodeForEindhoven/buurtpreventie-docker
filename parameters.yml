@@ -12,14 +12,14 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
 
-    locale:            nl
-    secret:            SecretTokenForApplication
+    locale:            __LOCALE__
+    secret:            __SECRET__
 
-    app_author:       'Buurtpreventie'
-    app_title:        'Buurtpreventie'
-    app_description:  'Buurtpreventie in Eindhoven'
+    app_author:       __AUTHOR__
+    app_title:        __TITLE__
+    app_description:  __DESC__
     app_theme:         ~
 
-    loopschema_minimum_aantal_lopers:       2
-    loopschema_maanden_vooruit:             3
-    loopschema_resultaat_voor_lopers:       true
+    loopschema_minimum_aantal_lopers:       __WALKERS__
+    loopschema_maanden_vooruit:             __MONTHS__
+    loopschema_resultaat_voor_lopers:       __RESULT__
