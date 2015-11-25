@@ -22,11 +22,7 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
 
 #Defaults, modify with environment variable to change
 ENV ALLOW_OVERRIDE **False**
-ENV MYSQL_HOST db
-ENV MYSQL_PORT 3306
 ENV MYSQL_DATABASE buurtpreventie
-ENV MYSQL_USER buurtpreventie
-ENV MYSQL_PASSWORD ~
 
 # Add image configuration and scripts
 ADD run.sh /run.sh
