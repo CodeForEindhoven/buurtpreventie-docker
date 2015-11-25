@@ -1,5 +1,5 @@
 FROM ubuntu:trusty
-MAINTAINER Fernando Mayo <fernando@tutum.co>
+MAINTAINER Milo van der Linden <milo@dogodigi.net>
 
 # Install base packages
 RUN apt-get update && \
@@ -20,18 +20,24 @@ RUN /usr/sbin/php5enmod mcrypt
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
     sed -i "s/variables_order.*/variables_order = \"EGPCS\"/g" /etc/php5/apache2/php.ini
 
+#Defaults, modify with environment variable to change
 ENV ALLOW_OVERRIDE **False**
+ENV MYSQL_HOST db
+ENV MYSQL_PORT 3306
+ENV MYSQL_DATABASE buurtpreventie
+ENV MYSQL_USER buurtpreventie
+ENV MYSQL_PASSWORD ~
 
 # Add image configuration and scripts
 ADD run.sh /run.sh
 RUN chmod 755 /*.sh
 
-# Configure /app folder with sample app
-RUN mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html
-RUN git clone https://github.com/CodeForEindhoven/buurtpreventie.git /app
+# Configure /webdir folder with sample app
+RUN mkdir -p /webdir && rm -fr /var/www/html && ln -s /webdir /var/www/html
+RUN git clone https://github.com/CodeForEindhoven/buurtpreventie.git /webdir
 
 EXPOSE 80
-WORKDIR /app
-COPY parameters.yml /app/app/config/parameters.yml
+WORKDIR /webdir
+COPY parameters.yml /webdir/app/config/parameters.yml
 
 CMD ["/run.sh"]

@@ -1,10 +1,10 @@
 parameters:
     database_driver:   pdo_mysql
-    database_host:     localhost
-    database_port:     ~
-    database_name:     ~
-    database_user:     ~
-    database_password: ~
+    database_host:     _DATABASE_HOST
+    database_port:     _DATABASE_PORT
+    database_name:     _DATABASE_NAME
+    database_user:     _DATABASE_USER
+    database_password: _DATABASE_PASS
 
     mailer_address:    ~
     mailer_transport:  gmail
