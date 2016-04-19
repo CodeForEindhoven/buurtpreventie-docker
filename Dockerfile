@@ -23,6 +23,10 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf && \
 #Defaults, modify with environment variable to change
 ENV ALLOW_OVERRIDE **False**
 ENV MYSQL_DATABASE buurtpreventie
+ENV DB_PORT_3306_TCP_ADDR localhost
+ENV DB_PORT_3306_TCP_PORT 3306
+ENV DB_ENV_MYSQL_USER root
+ENV DB_ENV_MYSQL_PASS mypassword
 ENV APP_LOCALE nl
 ENV APP_SECRET SecretTokenForApplication
 ENV APP_AUTHOR Buurtpreventie
