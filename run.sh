@@ -22,8 +22,6 @@ sed -i "s/__WALKERS__/$APP_MIN_WALKERS/g" /webdir/app/config/parameters.yml
 sed -i "s/__MONTHS__/$APP_MONTHS/g" /webdir/app/config/parameters.yml
 sed -i "s/__RESULT__/$APP_SHOW_RESULT/g" /webdir/app/config/parameters.yml
 
-/webdir/install_prod.sh
-
 source /etc/apache2/envvars
 tail -F /var/log/apache2/* &
 exec apache2 -D FOREGROUND
