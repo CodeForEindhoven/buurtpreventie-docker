@@ -47,7 +47,7 @@ RUN git clone https://github.com/CodeForEindhoven/buurtpreventie.git /webdir
 EXPOSE 80
 WORKDIR /webdir
 COPY parameters.yml /webdir/app/config/parameters.yml
-
+RUN composer install
 # config to enable .htaccess
 COPY apache2.conf /etc/apache2/apache2.conf
 RUN a2enmod rewrite
